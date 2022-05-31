@@ -1,0 +1,20 @@
+USER STORY
+
+AS A person looking for something to do
+I WANT to see venues and events near me 
+SO THAT I can go have fun
+
+ACCEPTANCE CRITERIA
+
+WHEN I load the page 
+THEN it prompts me to either input an address OR I can choose to use my current location
+WHEN I type and submit the address or give permission to access my location
+THEN it will load Google Maps
+WHEN the page loads
+THEN I am prompted to select a date and radius
+WHEN I look at the map
+THEN I can see pins on the map, and details in list form on the page
+WHEN I want to change my search criteria
+THEN I can either input a new location in a search bar OR go back to the home page via BACK button
+WHEN I want to see what I searched for previously
+THEN my most recent result will be displayed
