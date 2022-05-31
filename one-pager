@@ -23,8 +23,9 @@ THEN I can either input a new location in a search bar OR go back to the home pa
 WHEN I want to see what I searched for previously
 THEN my most recent result will be displayed
 
-WIREFRAME
+WIREFRAME and FLOWCHART
 
+https://docs.google.com/presentation/d/17tPyclXKA0BhiQDcLmuN6DCB2MngjBIddONnRevhSQA/edit?usp=sharing
 
 LIST OF APIS
 Geolocation Api
