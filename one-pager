@@ -1,3 +1,11 @@
+TITLE
+
+Something to Do
+
+DESCRIPTION
+
+An application that will show users what they can do for fun nearby. Users will have the option to use either their current location or input an address in order to get results. They will be able to customize the date and area radius as well. Recent history will be displayed on the page.
+
 USER STORY
 
 AS A person looking for something to do
@@ -18,3 +26,11 @@ WHEN I want to change my search criteria
 THEN I can either input a new location in a search bar OR go back to the home page via BACK button
 WHEN I want to see what I searched for previously
 THEN my most recent result will be displayed
+
+WIREFRAME
+
+
+LIST OF APIS
+
+
+BREAKDOWN OF TASKS
