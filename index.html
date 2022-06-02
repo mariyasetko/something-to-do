@@ -4,17 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./assets/css/style.css"/>
+
     <title>Something To Do</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="favicon" type="favicon" src="assets/images/favicon.ico"/>
+
   </head>
 
   <body>
 
     <header>
-        <h1>Something to Do</h1>
+      Need something to do?
     </header>
 
-    <input id="searchMapInput" class="mapControls" type="text" placeholder="Enter a Location">
+    <div class="wrapper">
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <input type="text" placeholder="Where?" class="mapControls" id="searchMapInput">
+        <div class="autocom-box">
+        </div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+      </div>
+    </div>
+
 
     <script src="./assets/js/script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
