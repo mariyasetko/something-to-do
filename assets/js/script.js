@@ -26,4 +26,12 @@ function initMap() {
         place.geometry.location.lng();
     });
   }
+
+var apiKey = "AIzaSyCtAbuFmbVu6rWhT0k9dMzVTdfno0j8cxI"
+
+
+//Create go back function
+document.getElementById("myButton").onclick = function () {
+  location.href = "file:///C:/Users/User/Desktop/something-to-do/index.html";
+};
   
