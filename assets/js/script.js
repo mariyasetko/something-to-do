@@ -20,7 +20,7 @@ $("#searchMapInput").keyup(function(event) {
   }
 });
 
-let button = "backButton";
+let button = "myButton";
 $(button).click(function(event) {
  window.location.assign("./index.html")
 });
@@ -34,26 +34,28 @@ function initMap() {
     autocomplete.addListener("place_changed", function () {
       let place = autocomplete.getPlace();
 
-      // document.getElementById("location-snap").innerHTML =
-        //place.formatted_address;
+       document.getElementById("location-snap").innerHTML =
+        place.formatted_address;
 
-      // document.getElementById("lat-span").innerHTML =
-        //place.geometry.location.lat();
+       document.getElementById("lat-span").innerHTML =
+        place.geometry.location.lat();
 
-      // document.getElementById("lon-span").innerHTML =
-        //place.geometry.location.lng();
+       document.getElementById("lon-span").innerHTML =
+        place.geometry.location.lng();
     });
   }
   
 //TICKETMASTER
   //to do: add html from https://developer.ticketmaster.com/products-and-docs/tutorials/events-search/search_events_in_location.html
 
+let consKey = "tfKaqOyAuAgQ6Xx2fWTdV8BQsbZ7jw7r";
+
   //to do: convert to switch statement and add case for reading user input instead of geolocation
   function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
-        var x = document.getElementById("location");
+        let x = document.getElementById("location");
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
@@ -78,15 +80,15 @@ function showError(error) {
 //passes location to discovery api
   //to do: add slider for desired radius
 function showPosition(position) {
-  var x = document.getElementById("location");
+  let x = document.getElementById("location");
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude; 
-  var latlon = position.coords.latitude + "," + position.coords.longitude;
+  let latlon = position.coords.latitude + "," + position.coords.longitude;
 
 
   $.ajax({
     type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&latlong="+latlon,
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=" + consKey + "&latlong="+latlon,
     async:true,
     dataType: "json",
     success: function(json) {
@@ -105,25 +107,26 @@ function showPosition(position) {
 
 //processes api response
 function showEvents(json) {
-  for(var i=0; i<json.page.size; i++) {
+  for(let i=0; i<json.page.size; i++) {
     $("#events").append("<p>"+json._embedded.events[i].name+"</p>");
   }
 }
 
 
-function initMap(position, json) {
-  var mapDiv = document.getElementById('map');
-  var map = new google.maps.Map(mapDiv, {
+/*function initMap(position, json) {
+  let mapDiv = document.getElementById('map');
+  let map = new google.maps.Map(mapDiv, {
     center: {lat: position.coords.latitude, lng: position.coords.longitude},
     zoom: 10
   });
-  for(var i=0; i<json.page.size; i++) {
+  for(let i=0; i<json.page.size; i++) {
     addMarker(map, json._embedded.events[i]);
   }
 }
+*/
 
 function addMarker(map, event) {
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
     map: map
   });
