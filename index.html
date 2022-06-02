@@ -23,13 +23,15 @@
     <div class="wrapper">
       <div class="search-input">
         <a href="" target="_blank" hidden></a>
-        <input type="text" placeholder="Where?">
+        <input type="text" placeholder="Where?" class="mapControls" id="searchMapInput">
         <div class="autocom-box">
         </div>
         <div class="icon"><i class="fas fa-search"></i></div>
       </div>
     </div>
 
+
     <script src="./assets/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
   </body>
 </html>
