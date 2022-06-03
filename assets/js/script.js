@@ -12,14 +12,41 @@ let mainURl = "./index.html";
 let searchURL = "./search.html";
 
 // On the keyup function (pressing down on enter then releasing it) it replaces the current file with the search html
-$("#searchMapInput").keyup(function (event) {
-  if (event.keyCode === 13) {
-    // 13 is the enter key
-    window.location.assign("./search.html");
-    //using assign instead of replace because it saves history so you can go back in the browser
-  }
-});
+//$("#searchMapInput").keyup(function (event) {
+//  if (event.keyCode === 13) {
+//    // 13 is the enter key
+//    window.location.assign("./search.html");
+//    //using assign instead of replace because it saves history so you can go back in the browser
+//    
+//  }
+//});
 
+/*
+$("#searchMapInput").keyup(function(event) {
+  if (event.keyCode === 13){
+    
+  let location = encodeURIComponent($("#searchMapInput").val());
+  
+  let googleGeocodeUrl = " https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&address=" + location + "&key=AIzaSyDqV1XcJM6Vj9R_tQl-863vSYrI4O3QdvI";
+  
+  $.ajax({
+    url: googleGeocodeUrl,
+    type: 'GET',
+    dataType: 'json', // added data type
+    success: function(result) {
+            let geo = result.results[0].geometry.location;
+        let lat = geo.lat;
+        let lng = geo.lng;
+
+        alert(geo);
+    }
+});
+    
+    //Save to storage
+    
+    //window.location.assign("./search.html");
+  }});
+*/
 let button = "myButton";
 $(button).click(function (event) {
   window.location.assign("./index.html");
@@ -34,15 +61,19 @@ function initMap() {
   autocomplete.addListener("place_changed", function () {
     let place = autocomplete.getPlace();
 
+    /*
     document.getElementById("location-snap").innerHTML =
-      place.formatted_address;
+    place.formatted_address;
 
     document.getElementById("lat-span").innerHTML =
-      place.geometry.location.lat();
+    place.geometry.location.lat();
 
     document.getElementById("lon-span").innerHTML =
-      place.geometry.location.lng();
-  });
+    place.geometry.location.lng(); */
+	localStorage.setItem("lat", place.geometry.location.lat());
+	localStorage.setItem("lng", place.geometry.location.lng());
+    window.location.assign("./search.html")
+  }); 
 }
 
 //TICKETMASTER
@@ -145,11 +176,12 @@ function addMarker(map, event) {
 function searchMap() {
 
   let mapOptions = {
-    center: new google.maps.LatLng('0', '0'),
+    center: new google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lng")),
     zoom: 12
   }
 
   let map = new google.maps.Map(document.getElementById("map"), mapOptions)
 
 }
+
 
