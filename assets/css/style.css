@@ -111,3 +111,18 @@ header {
   background-color: #644bff;
   /* background color is just for testing right now */
 }
+
+/* styling button*/
+.button{
+  background-color: gray;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: right;
+  text-decoration: none;
+  display: inline-end;
+  font-size: 16px;
+  margin-left: 1000px;
+  border-radius: 25px;
+
+};
