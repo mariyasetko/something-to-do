@@ -95,3 +95,19 @@ header {
     text-align: center;
     font-size: 40px;
 };
+
+/* container for the map */
+#container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* map itself */
+#map {
+  height: 80vh;
+  width: 80vh;
+  background-color: #644bff;
+  /* background color is just for testing right now */
+}

@@ -7,111 +7,115 @@
 
 // Search bar
 
-let APIKey="AIzaSyDqV1XcJM6Vj9R_tQl-863vSYrI4O3QdvI";
-let mainURl = "./index.html"
-let searchURL = "./search.html"
+let APIKey = "AIzaSyDqV1XcJM6Vj9R_tQl-863vSYrI4O3QdvI";
+let mainURl = "./index.html";
+let searchURL = "./search.html";
 
 // On the keyup function (pressing down on enter then releasing it) it replaces the current file with the search html
-$("#searchMapInput").keyup(function(event) {
+$("#searchMapInput").keyup(function (event) {
   if (event.keyCode === 13) {
-  // 13 is the enter key
-    window.location.assign("./search.html")
-  //using assign instead of replace because it saves history so you can go back in the browser
+    // 13 is the enter key
+    window.location.assign("./search.html");
+    //using assign instead of replace because it saves history so you can go back in the browser
   }
 });
 
 let button = "myButton";
-$(button).click(function(event) {
- window.location.assign("./index.html")
+$(button).click(function (event) {
+  window.location.assign("./index.html");
 });
 
-// initMap common 
+// initMap common
 function initMap() {
-    let input = document.getElementById("searchMapInput");
+  let input = document.getElementById("searchMapInput");
 
-    let autocomplete = new google.maps.places.Autocomplete(input);
+  let autocomplete = new google.maps.places.Autocomplete(input);
 
-    autocomplete.addListener("place_changed", function () {
-      let place = autocomplete.getPlace();
+  autocomplete.addListener("place_changed", function () {
+    let place = autocomplete.getPlace();
 
-       document.getElementById("location-snap").innerHTML =
-        place.formatted_address;
+    document.getElementById("location-snap").innerHTML =
+      place.formatted_address;
 
-       document.getElementById("lat-span").innerHTML =
-        place.geometry.location.lat();
+    document.getElementById("lat-span").innerHTML =
+      place.geometry.location.lat();
 
-       document.getElementById("lon-span").innerHTML =
-        place.geometry.location.lng();
-    });
-  }
-  
+    document.getElementById("lon-span").innerHTML =
+      place.geometry.location.lng();
+  });
+}
+
 //TICKETMASTER
-  //to do: add html from https://developer.ticketmaster.com/products-and-docs/tutorials/events-search/search_events_in_location.html
+//to do: add html from https://developer.ticketmaster.com/products-and-docs/tutorials/events-search/search_events_in_location.html
 
 let consKey = "tfKaqOyAuAgQ6Xx2fWTdV8BQsbZ7jw7r";
 
-  //to do: convert to switch statement and add case for reading user input instead of geolocation
-  function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-        let x = document.getElementById("location");
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+//to do: convert to switch statement and add case for reading user input instead of geolocation
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    let x = document.getElementById("location");
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
 }
 
 function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
-            break;
-        case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
-            break;
-        case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
-            break;
-        case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
-            break;
-    }
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out.";
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred.";
+      break;
+  }
 }
 
 //passes location to discovery api
-  //to do: add slider for desired radius
+//to do: add slider for desired radius
 function showPosition(position) {
   let x = document.getElementById("location");
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude; 
+  x.innerHTML =
+    "Latitude: " +
+    position.coords.latitude +
+    "<br>Longitude: " +
+    position.coords.longitude;
   let latlon = position.coords.latitude + "," + position.coords.longitude;
 
-
   $.ajax({
-    type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=" + consKey + "&latlong="+latlon,
-    async:true,
+    type: "GET",
+    url:
+      "https://app.ticketmaster.com/discovery/v2/events.json?apikey=" +
+      consKey +
+      "&latlong=" +
+      latlon,
+    async: true,
     dataType: "json",
-    success: function(json) {
-                console.log(json);
-                var e = document.getElementById("events");
-                e.innerHTML = json.page.totalElements + " events found.";
-                showEvents(json);
-                initMap(position, json);
-             },
-    error: function(xhr, status, err) {
-                console.log(err);
-             }
+    success: function (json) {
+      console.log(json);
+      var e = document.getElementById("events");
+      e.innerHTML = json.page.totalElements + " events found.";
+      showEvents(json);
+      initMap(position, json);
+    },
+    error: function (xhr, status, err) {
+      console.log(err);
+    },
   });
-
 }
 
 //processes api response
 function showEvents(json) {
-  for(let i=0; i<json.page.size; i++) {
-    $("#events").append("<p>"+json._embedded.events[i].name+"</p>");
+  for (let i = 0; i < json.page.size; i++) {
+    $("#events").append("<p>" + json._embedded.events[i].name + "</p>");
   }
 }
-
 
 /*function initMap(position, json) {
   let mapDiv = document.getElementById('map');
@@ -127,10 +131,25 @@ function showEvents(json) {
 
 function addMarker(map, event) {
   let marker = new google.maps.Marker({
-    position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
-    map: map
+    position: new google.maps.LatLng(
+      event._embedded.venues[0].location.latitude,
+      event._embedded.venues[0].location.longitude
+    ),
+    map: map,
   });
-  marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+  marker.setIcon("http://maps.google.com/mapfiles/ms/icons/red-dot.png");
   console.log(marker);
+}
+
+// Adds the map to the 2nd page
+function searchMap() {
+
+  let mapOptions = {
+    center: new google.maps.LatLng('0', '0'),
+    zoom: 12
+  }
+
+  let map = new google.maps.Map(document.getElementById("map"), mapOptions)
+
 }
 
