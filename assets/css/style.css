@@ -1,3 +1,8 @@
+:root {
+ --orange: #fdd8b3;
+ --lightblue: #9fdbf6;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -7,8 +12,8 @@
 }
 
 body{
-  background: #e4b95d;
-  padding: 0 20px;
+  background: var(--lightblue);
+  padding: 0 0px;
 }
 
 ::selection{
@@ -83,18 +88,18 @@ body{
   text-align: center;
   line-height: 55px;
   font-size: 20px;
-  color: #644bff;
+  color: #FeCC98;
   cursor: pointer;
 }
 
-header {
+.main-header {
     position: relative;
     padding-top: 100px;
     top: 50%;
     width: 100%;
     text-align: center;
     font-size: 40px;
-};
+}
 
 /* container for the map */
 #container {
@@ -107,22 +112,43 @@ header {
 /* map itself */
 #map {
   height: 80vh;
-  width: 80vh;
-  background-color: #644bff;
-  /* background color is just for testing right now */
+  width: 140vh;
+  background-color: #918f9b;
+  position: relative; left: 210px;
 }
 
 /* styling button*/
-.button{
-  background-color: gray;
+.button {
+  background-color: rgb(186, 182, 182);
   border: none;
   color: black;
-  padding: 15px 32px;
-  text-align: right;
+  padding: 15px 20px;
   text-decoration: none;
   display: inline-end;
   font-size: 16px;
-  margin-left: 1000px;
   border-radius: 25px;
+  margin-top: -28px;
+  margin-bottom: 0px;
+  position: relative; left: 1700px;
+  position: relative; top: 36px;
+  
+}
 
-};
+#events {
+  background-color: rgb(186, 182, 182);
+  display: inline-block;
+  border-radius: 15%;
+  position: relative; bottom: 860px;
+  margin: 1%;
+  padding: 1%;
+  box-sizing: border-box;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  outline-style: dotted;
+}
+
+.second-header {
+  background-color: #918f9b;
+  margin-left: 0px;
+  margin-right: 0px;
+  height: 90px;
+}
