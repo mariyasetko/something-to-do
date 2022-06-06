@@ -17,6 +17,7 @@ On the main page, you will be alerted with a search bar, use this search bar to 
 On the second page after an address is typed in, it will show a google map with that area. If Ticketmaster has any events in your local area it will drop markers on the map and a list to the left will show up.
 ![image](https://user-images.githubusercontent.com/105133644/172189647-f7b0da78-0e71-475d-8cc2-20186ff538ae.png)
 <br>
+## Presentation
 Link to Project Presentation: https://docs.google.com/presentation/d/1XbrMpy-6nYXr4dcOgGGc9_9fc9yQQbAzF0DS-dwWQuM/edit?usp=sharing
 
 ## API's Used:
