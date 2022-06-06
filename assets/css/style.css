@@ -119,10 +119,9 @@ body{
 
 /* styling button*/
 .button {
-  background-color: rgb(186, 182, 182);
+  background-color: #265769;
   border: none;
-  color: black;
-  padding: 15px 20px;
+  color: #9CD6EC;
   text-decoration: none;
   display: inline-end;
   font-size: 16px;
@@ -131,13 +130,13 @@ body{
   margin-bottom: 0px;
   position: relative; left: 1700px;
   position: relative; top: 36px;
-  
 }
 
 #events {
-  background-color: rgb(186, 182, 182);
+  background-color: #4196B5;
+  color: #9CD6EC;
   display: inline-block;
-  border-radius: 15%;
+  border-radius: 10%;
   position: relative; bottom: 860px;
   margin: 1%;
   padding: 1%;
@@ -147,7 +146,7 @@ body{
 }
 
 .second-header {
-  background-color: #918f9b;
+  background-color: #4196B5;
   margin-left: 0px;
   margin-right: 0px;
   height: 90px;
