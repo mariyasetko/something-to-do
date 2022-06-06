@@ -6,7 +6,7 @@ Link to main Repo: https://github.com/mariyasetko/something-to-do
 Link to live website: https://mariyasetko.github.io/something-to-do/
 <br>
 
-## Breif Overview
+## Brief Overview
 Welcome to "Something to Do!" This website was made with CSS and JavaScript in order to utilize both Ticketmaster's API and Google Maps Places API in order to find events in your area.
 
 ## How it works - Page 1
