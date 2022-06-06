@@ -1,11 +1,11 @@
 let APIKey = "AIzaSyDqV1XcJM6Vj9R_tQl-863vSYrI4O3QdvI";
-let mainURl = "./index.html";
+let mainURL = "./index.html";
 let searchURL = "./search.html";
 
 //GOOGLE PLACES
-let button = "myButton";
+let button = "btn btn-secondary";
 $(button).click(function (event) {
-  window.location.assign(mainURl);
+  window.location.assign(mainURL);
 });
 
 // initMap common
@@ -32,8 +32,8 @@ function initMap() {
       } else if(types.includes("administrative_area_level_1")) {
         addrComponent = 'administrative_area_level_1';
         addrComponentValue = place.address_components[i].short_name;
-      } else if(types.includes("administrative_area_level_2")) {
-        addrComponent = 'administrative_area_level_2';
+      } else if(types.includes("locality")) {
+        addrComponent = 'locality';
         addrComponentValue = place.address_components[i].short_name;
       }
 
@@ -44,7 +44,7 @@ function initMap() {
         case 'administrative_area_level_1': // province
           localStorage.setItem("stateCode", addrComponentValue);
           break;
-        case 'administrative_area_level_2': // city
+        case 'locality': // city
           localStorage.setItem("city", addrComponentValue);
           break;
         }
