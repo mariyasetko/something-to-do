@@ -1,9 +1,9 @@
 # Something To Do
 An application that finds fun things to do now in your selected location.
 <br>
-Link to main Repo:
+Link to main Repo: https://github.com/mariyasetko/something-to-do
 <br>
-Link to live website:
+Link to live website: https://mariyasetko.github.io/something-to-do/
 <br>
 
 ## Breif Overview
